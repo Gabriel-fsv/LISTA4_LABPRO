@@ -1,29 +1,34 @@
 #include <stdio.h>
 #include <string.h>
-#define TAM 20
+#define TAM 30
 
     int main(void){
-
-        char str[TAM];
-        char caractere;
+        char letra, palavra[TAM];
         int somador = 0;
 
         puts("Digite seu nome: ");
-        fgets(str, sizeof(str), stdin);
+        fgets(palavra, sizeof(palavra), stdin);
 
-        str[strcspn(str, "\n")] = '\0';
+        palavra[strcspn(palavra, "\n")] = '\0';
 
-        puts("Digite um caractere: ");
+        puts("Digite uma letra: ");
+        letra = getchar();
 
-        caractere = getchar();
+        for(int i = 0; i < 30; i++){
+            if(letra == '\n'){
+                puts("Invalido");
+                return 0;
+            }
 
-        for(int i = 0; str[i] != '\0' ; i++){
-            if(caractere == str[i]){
+            if(palavra[i] == letra){
                 somador++;
             }
         }
+    
+    printf("A letra '%c' se repete %d vezes", letra, somador);
 
-        printf("A letra %c se repete %d vezes\n", caractere, somador);
+    return 0;
 
-        return 0;
     }
+
+
